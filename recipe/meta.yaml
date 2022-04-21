@@ -15,17 +15,16 @@ source:
 
 build:
   number: 0
-  noarch: python
-  script: "{{ PYTHON }} -m pip install . -vv"
+  script: {{ PYTHON }} -m pip install . -vv
   
-
 requirements:
   host:
-    - python >=2.7
+    - python
     - pip
-
+    - setuptools
+    - wheel
   run:
-    - python >=2.7
+    - python
     - python-levenshtein >=0.12
 
 test:
@@ -36,6 +35,10 @@ test:
     - fuzzywuzzy.process
     - fuzzywuzzy.string_processing
     - fuzzywuzzy.utils
+  requires:
+    - pip
+  commands:
+    - pip check
 
 about:
   home: https://github.com/seatgeek/fuzzywuzzy
@@ -44,7 +47,7 @@ about:
   license_file: LICENSE.txt
   summary: 'Fuzzy string matching in python'
   dev_url: https://github.com/seatgeek/fuzzywuzzy
-  doc_url: http://chairnerd.seatgeek.com/fuzzywuzzy-fuzzy-string-matching-in-python/
+  doc_url: https://chairnerd.seatgeek.com/fuzzywuzzy-fuzzy-string-matching-in-python/
 
 extra:
   recipe-maintainers:
